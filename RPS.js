@@ -7,7 +7,27 @@ var config = {
 };
 firebase.initializeApp(config);
 
-dataB = firebase.database().ref();
+dataB = firebase.database();
+
+var playerOne = dataB.ref('one');
+var playerTwo = dataB.ref('two');
+
+$('button').on('click', function() {
+  playerOne.set({
+    name: "Craig",
+    turnPlayed: false
+  });
+  playerTwo.set({
+    name: "Eric",
+    turnPlayed: false
+  });
+})
+
+function getValue(ref) {
+  ref.on('value', function(snapshot) {
+    console.log(snapshot.val())
+  });
+};
 
 firebase.auth().signInAnonymously().catch(function(error) {
 // Handle Errors here.
@@ -23,8 +43,7 @@ if (user) {
   var uid = user.uid;
   // ...
 } else {
-  // User is signed out.
-  // ...
+  logout(user);
 }
 // ...
 });
@@ -144,5 +163,9 @@ function compare(item1, item2){
   }
 
 }
+
+dataB.ref().set({
+
+});
 
 });
