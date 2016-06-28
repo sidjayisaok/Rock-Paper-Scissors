@@ -14,11 +14,11 @@ var playerTwo = dataB.ref('two');
 
 $('button').on('click', function() {
   playerOne.set({
-    name: "Craig",
+    name: "",
     turnPlayed: false
   });
   playerTwo.set({
-    name: "Eric",
+    name: "",
     turnPlayed: false
   });
 })
