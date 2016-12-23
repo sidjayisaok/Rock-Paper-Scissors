@@ -1,8 +1,21 @@
+a{
+  color: #f9f9f9;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #ff9999;
+}
+
 body{
   background-color: #97202F;
-  color: #fff;
+  color: #ffeedd;
   font-family: 'Oswald', sans-serif;
   font-size: 18px;
+}
+
+button{
+  margin: 3%;
 }
 
 .left{

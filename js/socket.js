@@ -7,12 +7,10 @@ var player2Scissors = "#player2Scissors";
 var player2Paper = "#player2Paper";
 var item = this.id;
 
-console.log(item);
-
 //function to handle requests
 function clickEvent(paramA){
     $(paramA).on('click', function(){
-          //this communicates with server
+         //this communicates with server
          socket.emit('player event', $(paramA).val({item}));
          $(paramA).val('');
         return false;
@@ -33,6 +31,6 @@ clickEvent(player1Scissors);
 clickEvent(player2Scissors);
 
 //this communicates with console
-socket.on('news', function(data){
+socket.on('player msg', function(data){
     console.log(data);  
 });

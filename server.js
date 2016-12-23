@@ -17,11 +17,13 @@ app.get('/', function(request, repsonse){
 io.on('connection', function(socket){
     console.log('User signed in');
     
-    //test
-    socket.emit('news', { hello: 'world' });
-    //this communicates with the socket.js event
+    //this communicates to the client browser
+    socket.emit('player msg', function(data){
+        console.log('Return value: ' + JSON.stringify(data.selector));
+    });
+    //this communicates with the socket.js event on the server
     socket.on('player event', function(data){
-        console.log('Return value: ' + data);
+        console.log('Return value: ' + JSON.stringify(data.selector));
     });
 
     //disconnect protocol
