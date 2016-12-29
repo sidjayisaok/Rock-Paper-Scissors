@@ -15,6 +15,21 @@ function clickEvent(paramA){
          $(paramA).val('');
         return false;
     });
+    // this transmit button presses to everyone
+    socket.on('player event', function(data){
+        $('#testSocket').empty();
+        $('#testSocket').append($('<li>').text(data));
+    });
+    //this shows when the player is connected
+     socket.on('connect', function(data){
+        $('#testSocket').empty();
+        $('#testSocket').append($('<li>').text(data));
+    });
+    //this shows when the player is disconnected
+    socket.on('disconnect', function(data){
+        $('#testSocket').empty();
+        $('#testSocket').append($('<li>').text(data));
+    });
 }
 
 //call function

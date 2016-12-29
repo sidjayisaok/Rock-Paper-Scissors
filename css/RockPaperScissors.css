@@ -9,13 +9,14 @@ a:hover{
 
 body{
   background-color: #97202F;
-  color: #ffeedd;
+  color: #161616;
   font-family: 'Oswald', sans-serif;
   font-size: 18px;
 }
 
 button{
   margin: 3%;
+  box-shadow: 1px 1px 1px;
 }
 
 .left{

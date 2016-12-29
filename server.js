@@ -16,7 +16,10 @@ app.get('/', function(request, repsonse){
 //socket.io initialization
 io.on('connection', function(socket){
     console.log('User signed in');
-    
+    //connection protocol
+    socket.on('connection', function(){
+        io.emit('connect', "Player connected");
+    });
     //this communicates to the client browser
     socket.emit('player msg', function(data){
         console.log('Return value: ' + JSON.stringify(data.selector));
@@ -24,11 +27,12 @@ io.on('connection', function(socket){
     //this communicates with the socket.js event on the server
     socket.on('player event', function(data){
         console.log('Return value: ' + JSON.stringify(data.selector));
+        io.emit('player event', JSON.stringify(data.selector));
     });
-
-    //disconnect protocol
+    //disconnection protocol
     socket.on('disconnect', function(){
         console.log('User disconnected');
+        io.emit('disconnect', "Player disconnected");
     });
 });
 
