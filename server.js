@@ -17,7 +17,11 @@ app.get('/', function(request, repsonse){
 io.on('connection', function(socket){
     console.log('User signed in');
     //connection protocol
-    socket.on('connection', function(){
+    socket.on('connection', function(socket){
+        socket.emit('test', {
+            results: 'nyan-cat',
+            '/chat' : 'so doge, much love'
+        });
         io.emit('connect', "Player connected");
     });
     //this communicates to the client browser

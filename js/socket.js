@@ -7,6 +7,11 @@ var player2Scissors = "#player2Scissors";
 var player2Paper = "#player2Paper";
 var item = this.id;
 
+function sendMsg(data){
+    $('#testSocket').empty();
+    $('#testSocket').append($('<li>').text(data));
+}
+
 //function to handle requests
 function clickEvent(paramA){
     $(paramA).on('click', function(){
@@ -14,21 +19,19 @@ function clickEvent(paramA){
          socket.emit('player event', $(paramA).val({item}));
          $(paramA).val('');
         return false;
+        console.log(paramA);
     });
     // this transmit button presses to everyone
     socket.on('player event', function(data){
-        $('#testSocket').empty();
-        $('#testSocket').append($('<li>').text(data));
+        sendMsg(data);
     });
     //this shows when the player is connected
      socket.on('connect', function(data){
-        $('#testSocket').empty();
-        $('#testSocket').append($('<li>').text(data));
+         sendMsg(data);
     });
     //this shows when the player is disconnected
     socket.on('disconnect', function(data){
-        $('#testSocket').empty();
-        $('#testSocket').append($('<li>').text(data));
+        sendMsg(data);
     });
 }
 
